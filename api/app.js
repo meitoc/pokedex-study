@@ -1,4 +1,5 @@
 require('dotenv').config();
+const cors = require('cors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -11,6 +12,12 @@ const fs = require("fs");
 const csv = require("csvtojson")
 
 var app = express();
+
+const corsOptions = {
+  origin: process.env.BASEURL
+};
+
+app.use(cors(corsOptions));
 
 app.use(logger('dev'));
 app.use(express.json());
