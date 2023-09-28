@@ -125,7 +125,7 @@ router.get('/pokemons', function(req, res, next) {
       jsonFile.totalPokemons=jsonFile.data.length;
       jsonFile.data=jsonFile.data.filter((e,i)=>i>=(page-1)*limit && i<page*limit);
       console.log("json length",jsonFile.data.length)
-      console.log(jsonFile)
+      // console.log(jsonFile)
       res.status(200).send(jsonFile);
     } else {
       jsonFile.data=[];
