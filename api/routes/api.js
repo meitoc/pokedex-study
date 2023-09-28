@@ -119,6 +119,7 @@ router.get('/pokemons', function(req, res, next) {
   const page=req.query.page;
   const limit=req.query.limit;
   const jsonFile = req.json;
+  console.log("page:",page,"limit:",limit);
   if(page && limit){
     if((page-1)*limit<=jsonFile.data.length){
       jsonFile.totalPokemons=jsonFile.data.length;
