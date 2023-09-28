@@ -113,7 +113,7 @@ router.get('/pokemons', function(req, res, next) {
 });
 
 
-//ALL POKEMON JSON
+//PROCESS QUERY AND RESPONE POKEMON JSON
 
 router.get('/pokemons', function(req, res, next) {
   const page=req.query.page;
@@ -126,7 +126,7 @@ router.get('/pokemons', function(req, res, next) {
       jsonFile.data=jsonFile.data.filter((e,i)=>i>=(page-1)*limit && i<page*limit);
       console.log("json length",jsonFile.data.length)
       // console.log(jsonFile)
-      res.status(200).send(jsonFile);
+      res.status(200).send(JSON.parse(jsonFile));
     } else {
       jsonFile.data=[];
       jsonFile.totalPokemons=0;
