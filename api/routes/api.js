@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 //CONST AND INITIAL VALUE
 
-const baseUrl = "https://glistening-bunny-69e8e7.netlify.app/";
+const baseUrl = process.env.BACK_END_BASEURL;
 
 const csvFilePath = 'archive/pokemon.csv';
 const newJsonPath = 'archive/pokemons.json';
