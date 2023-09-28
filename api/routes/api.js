@@ -93,8 +93,6 @@ router.get('/pokemons', function(req, res, next) {
   if(type){
     const pokemonArray=req.json;
     req.json.data = pokemonArray.data.filter(e=>(e.types[0]?.toLowerCase()===type || e.types[1]?.toLowerCase()===type));
-    // console.log(pokemonArray.data.length)
-    // res.status(200).send(filterredPokemonArray);
   }
   next();
 });
@@ -106,8 +104,6 @@ router.get('/pokemons', function(req, res, next) {
   console.log(search)
   if(search){
     req.json.data = req.json.data.filter(e=>e.name.includes(search));
-    // console.log(req.json.data.length)
-    // res.status(200).send(filterredPokemonArray);
   }
   next();
 });
@@ -124,9 +120,8 @@ router.get('/pokemons', function(req, res, next) {
     if((page-1)*limit<=jsonFile.data.length){
       jsonFile.totalPokemons=jsonFile.data.length;
       jsonFile.data=jsonFile.data.filter((e,i)=>i>=(page-1)*limit && i<page*limit);
-      console.log("json length",jsonFile.data.length)
-      // console.log(jsonFile)
-      res.status(200).send(JSON.parse(jsonFile));
+      console.log("json length",jsonFile.data.length);
+      res.status(200).send(jsonFile);
     } else {
       jsonFile.data=[];
       jsonFile.totalPokemons=0;
