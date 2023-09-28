@@ -14,9 +14,11 @@ const csv = require("csvtojson")
 var app = express();
 
 const corsOptions = {
-  origin: process.env.FRONT_END_BASEURL
+  origin: process.env.FRONT_END_BASEURL,
+  methods: 'GET,POST,OPTIONS', // Cấu hình các phương thức HTTP cho phép truy cập CORS
+  allowedHeaders: 'Content-Type,Authorization' // Cấu hình các tiêu đề cho phép truy cập CORS
 };
-console.log(corsOptions.origin)
+// console.log(corsOptions.origin)
 
 app.use(cors(corsOptions));
 
