@@ -20,6 +20,7 @@ const pokemonTypes = [
 //Load and process json
 
 router.use('/', (req,res,next)=>{
+  console.log(req.headers.referer);
   try{
     const file =  fs.readFileSync(newJsonPath,'utf-8');
     req.jsonFile=JSON.parse(file);
@@ -122,7 +123,7 @@ router.get('/pokemons', function(req, res, next) {
     if((page-1)*limit<=jsonFile.data.length){
       jsonFile.totalPokemons=jsonFile.data.length;
       jsonFile.data=jsonFile.data.filter((e,i)=>i>=(page-1)*limit && i<page*limit);
-      console.log(jsonFile.data.length)
+      console.log("json length",jsonFile.data.length)
       res.status(200).send(jsonFile);
     } else {
       jsonFile.data=[];
