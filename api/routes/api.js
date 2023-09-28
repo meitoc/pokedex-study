@@ -120,20 +120,17 @@ router.get('/pokemons', function(req, res, next) {
       jsonFile.totalPokemons=jsonFile.data.length;
       jsonFile.data=jsonFile.data.filter((e,i)=>i>=(page-1)*limit && i<page*limit);
       console.log("json length",jsonFile.data.length);
-      res.json(jsonFile);
-      // res.status(200).send(jsonFile);
+      res.status(200).send(jsonFile);
     } else {
       jsonFile.data=[];
       jsonFile.totalPokemons=0;
-      res.json(jsonFile);
-      // res.status(200).send(jsonFile);
+      res.status(200).send(jsonFile);
       // const err = new Error('Wrong page and limit');
       // err.statusCode=403;
       // next(err);
     }
   } else{
-    res.json(jsonFile);
-    // res.status(200).send(jsonFile);
+    res.status(200).send(jsonFile);
   }
 });
 
