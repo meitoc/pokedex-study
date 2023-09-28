@@ -4,12 +4,10 @@ import { BASE_URL } from "./config";
 const apiService = axios.create({
     baseURL: BASE_URL,
 });
-// withCredentials: true,
 
 apiService.interceptors.request.use(
     (request) => {
         console.log("Start Request", request);
-        console.log(BASE_URL);
         return request;
     },
     function (error) {
