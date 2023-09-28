@@ -20,7 +20,6 @@ const pokemonTypes = [
 //Load and process json
 
 router.use('/', (req,res,next)=>{
-  console.log(req.headers.referer);
   try{
     const file =  fs.readFileSync(newJsonPath,'utf-8');
     req.jsonFile=JSON.parse(file);
